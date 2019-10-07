@@ -2,6 +2,8 @@
 
 # Laravel Enums
 
+The package is based on the implementation of Enum from [myclabs/php-enum](https://github.com/myclabs/php-enum).
+
 ExampleModel
 ```php
 use App\Enums\ExampleStatusEnum;
@@ -66,6 +68,9 @@ $exampleModel->save();
 echo $exampleModel->status
 ```
 
+## Documentation
+
+See documentation [myclabs/php-enum](https://github.com/myclabs/php-enum).
 
 ### Changelog
 

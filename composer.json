@@ -1,5 +1,5 @@
 {
-  "name": "LeMaX10/laravel-enums",
+  "name": "lemax10/laravel-enums",
   "description": "Enum package for models and project",
   "keywords": ["laravel", "enums", "Eloquent"],
   "license": "MIT",

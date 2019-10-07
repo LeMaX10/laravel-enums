@@ -1,0 +1,28 @@
+{
+  "name": "LeMaX10/laravel-enums",
+  "description": "Enum package for models and project",
+  "keywords": ["laravel", "enums", "Eloquent"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Vladimir Pyankov",
+      "email": "rdlrobot@gmail.com",
+      "homepage": "https://github.com/LeMaX10"
+    }
+  ],
+  "require": {
+    "php": ">=7.1",
+    "illuminate/support": "5.4.*|5.5.*|5.6.*|5.7.*|5.8.*|^6.0",
+    "illuminate/validation": "5.4.*|5.5.*|5.6.*|5.7.*|5.8.*|^6.0",
+    "illuminate/database": "5.4.*|5.5.*|5.6.*|5.7.*|5.8.*|^6.0",
+    "myclabs/php-enum": "^1.7"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.8.36 || ^5.7.27 || ^6.5.8"
+  },
+  "autoload": {
+    "psr-4": {
+      "LeMaX10\\Enums\\": "src/"
+    }
+  }
+}

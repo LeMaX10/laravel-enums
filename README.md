@@ -56,6 +56,15 @@ You can install the package via composer:
 composer require LeMaX10/laravel-enums
 ```
 
+Register the service provider in config/app.php from Laravel < 5.5:
+
+```php
+'providers' => [
+    ...
+    \LeMaX10\Enums\EnumServiceProvider::class,
+    ...
+]
+```
 ## Usage
 
 ``` php

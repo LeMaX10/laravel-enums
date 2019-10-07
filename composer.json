@@ -24,5 +24,12 @@
     "psr-4": {
       "LeMaX10\\Enums\\": "src/"
     }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "LeMaX10\\Enums\\EnumServiceProvider"
+      ]
+    }
   }
 }

@@ -25,6 +25,14 @@
       "LeMaX10\\Enums\\": "src/"
     }
   },
+  "autoload-dev": {
+    "psr-4": {
+      "LeMaX10\\Enums\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "test": "vendor/bin/phpunit"
+  },
   "extra": {
     "laravel": {
       "providers": [

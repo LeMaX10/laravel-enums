@@ -12,27 +12,35 @@ use Illuminate\Support\Arr;
 trait ModelEnums
 {
     /**
+     * Get a plain attribute (not a relationship).
      *
+     * @param  string  $key
+     * @return mixed
      */
-    public static function bootModelEnums(): void
+    public function getAttributeValue($key)
     {
-        if (!property_exists(get_called_class(), 'enums')) {
-            return;
+        if ($this->isEnumAttribute($key) && Arr::get($this->attributes, $key) !== null) {
+            return $this->getEnumValue($key);
         }
 
-        static::extend(function ($model) {
-            $model->bindEvent('model.beforeSetAttribute', static function ($key, $value) use ($model) {
-                if ($model->isEnumAttribute($key) && !empty($value)) {
-                    return $model->setEnumValue($key, $value);
-                }
-            });
+        return parent::getAttributeValue($key);
+    }
 
-            $model->bindEvent('model.beforeGetAttribute', static function ($key) use ($model) {
-                if ($model->isEnumAttribute($key) && Arr::get($model->attributes, $key) !== null) {
-                    return $model->getEnumValue($key);
-                }
-            });
-        });
+    /**
+     * Set a given attribute on the model.
+     *
+     * @param  string  $key
+     * @param  mixed  $value
+     * @return mixed
+     */
+    public function setAttribute($key, $value)
+    {
+        if ($this->isEnumAttribute($key) && !empty($value)) {
+            $this->attributes[$key] = $this->setEnumValue($key, $value);
+            return $this;
+        }
+
+        return parent::setAttribute($key, $value);
     }
 
     /**
@@ -40,6 +48,10 @@ trait ModelEnums
      */
     public function getEnumsAttributes(): array
     {
+        if (!property_exists(get_called_class(), 'enums')) {
+            return [];
+        }
+
         return (array) $this->enums ?? [];
     }
 

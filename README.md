@@ -81,6 +81,13 @@ echo $exampleModel->status
 
 See documentation [myclabs/php-enum](https://github.com/myclabs/php-enum).
 
+## Testing
+You can run the tests with:
+
+```bash
+composer test
+```
+
 ### Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.

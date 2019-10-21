@@ -48,6 +48,85 @@ final class ExampleStatusEnum extends Enum
     private const BAR = 'bar';
 }
 ```
+
+ExampleTranslatableEnum
+```php
+use LeMaX10\Enums\Enum;
+use LeMaX10\Enums\Contracts\Translatable;
+
+/**
+ * Class ExampleStatusEnum
+ * @package App\Enums
+ */
+final class ExampleStatusEnum extends Enum implements Translatable
+{
+    /**
+     *
+     */
+    private const FOO = 'foo';
+
+    /**
+     *
+     */
+    private const BAR = 'bar';
+    
+    /**
+     * Translatable value
+     * @return string
+     */
+    public function getTransValue(): string
+    {
+        return trans('enum'. $this->value);
+    }
+}
+```
+
+Request Validation Rules
+```php
+<?php
+
+
+namespace App\Http\Requests;
+
+
+use App\Enums\ExampleStatusEnum;
+use Illuminate\Http\Request;
+
+class ExampleRequest extends Request
+{
+    public function rules(): array
+    {
+        return [
+            'status' => 'required|enum:'. ExampleStatusEnum::class
+        ];
+    }
+}
+```
+
+or
+```php
+<?php
+
+
+namespace App\Http\Requests;
+
+
+use App\Enums\ExampleStatusEnum;
+use LeMaX10\Enums\Rules\EnumValue;
+use Illuminate\Http\Request;
+
+class ExampleRequest extends Request
+{
+    public function rules(): array
+    {
+        return [
+            'status' => ['required', new EnumValue(ExampleStatusEnum::class)]
+        ];
+    }
+}
+```
+
+
 ## Installation
 
 You can install the package via composer:

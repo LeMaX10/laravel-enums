@@ -3,7 +3,6 @@
 
 namespace LeMaX10\Enums\Rules;
 
-
 use Illuminate\Contracts\Validation\Rule;
 use LeMaX10\Enums\Traits\EnumValidation;
 use LeMaX10\Enums\Enum;
@@ -23,10 +22,11 @@ class EnumValue implements Rule
 
     /**
      * EnumValue constructor.
+     * @param string $enumClass
      */
     public function __construct(string $enumClass)
     {
-        if(!class_exists($enumClass)) {
+        if (!class_exists($enumClass)) {
             throw new \InvalidArgumentException('Cannot validate against the enum, the class '. $this->enumClass .' doesn\'t exist.');
         }
 

@@ -76,7 +76,7 @@ final class ExampleStatusEnum extends Enum implements Translatable
      */
     public function getTransValue(): string
     {
-        return trans('enum'. $this->value);
+        return trans('enum.'. $this->value);
     }
 }
 ```

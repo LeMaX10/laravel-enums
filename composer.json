@@ -1,7 +1,7 @@
 {
   "name": "lemax10/laravel-enums",
-  "description": "Enum package for models and project",
-  "keywords": ["laravel", "enums", "Eloquent"],
+  "description": "Simple Enum implementation for Laravel. With ability to casting for Eloquent models and labels translations via lang files.",
+  "keywords": ["laravel", "enum", "eloquent", "lemax10", "laravel-enum"],
   "license": "MIT",
   "authors": [
     {

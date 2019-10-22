@@ -126,6 +126,28 @@ class ExampleRequest extends Request
 }
 ```
 
+or
+```php
+<?php
+
+
+namespace App\Http\Requests;
+
+
+use App\Enums\ExampleStatusEnum;
+use Illuminate\Http\Request;
+
+class ExampleRequest extends Request
+{
+    public function rules(): array
+    {
+        return [
+            'status' => ['required', ExampleStatusEnum::rule()]
+        ];
+    }
+}
+```
+
 
 ## Installation
 

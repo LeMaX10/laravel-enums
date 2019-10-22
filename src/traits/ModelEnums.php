@@ -64,7 +64,7 @@ trait ModelEnums
     public function setEnumValue($key, $value): Enum
     {
         $enumObj = $this->getEnumsAttributes()[$key];
-        if (\is_string($value) && $enumObj::isValid($value)) {
+        if (\is_string($value) && call_user_func([$enumObj, 'isValid'], $value)) {
             $value = new $enumObj($value);
         }
 

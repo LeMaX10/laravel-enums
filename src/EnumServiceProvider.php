@@ -4,7 +4,6 @@ namespace LeMaX10\Enums;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Validator;
-use LeMaX10\Enums\Rules\EnumValue;
 
 /**
  * Class EnumServiceProvider
@@ -25,9 +24,14 @@ class EnumServiceProvider extends ServiceProvider
      */
     private function registerValidators(): void
     {
-        Validator::extend('enum', function ($attribute, $value, $parameters, $validator) {
+        Validator::extend('enum', static function ($attribute, $value, $parameters, $validator) {
             $enum = $parameters[0] ?? null;
-            return (new EnumValue((string) $enum))->passes($attribute, $value);
+            if (!class_exists($enum)) {
+                return false;
+            }
+
+            $enumValidator = call_user_func([$enum, 'rule']);
+            return $enumValidator->passes($attribute, $value);
         });
     }
 }

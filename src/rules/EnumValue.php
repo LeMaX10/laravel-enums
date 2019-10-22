@@ -4,7 +4,6 @@
 namespace LeMaX10\Enums\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
-use LeMaX10\Enums\Traits\EnumValidation;
 use LeMaX10\Enums\Enum;
 
 /**
@@ -13,8 +12,6 @@ use LeMaX10\Enums\Enum;
  */
 class EnumValue implements Rule
 {
-    use EnumValidation;
-
     /**
      * @var Enum
      */
@@ -42,7 +39,7 @@ class EnumValue implements Rule
      */
     public function passes($attribute, $value): bool
     {
-        return $this->enum::isValid($value);
+        return call_user_func([$this->enum, 'isValid'], $value);
     }
 
     /**

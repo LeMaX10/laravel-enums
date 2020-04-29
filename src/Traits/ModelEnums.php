@@ -113,10 +113,13 @@ trait ModelEnums
     protected function originalIsEquivalent($key, $current)
     {
         if ($this->isEnumAttribute($key)) {
-            $enumClass = $this->getEnumsAttributes()[$key];
-            $original  = new $enumClass($this->getOriginal($key));
+            $originalValue = $this->getOriginal($key);
+            if (!empty($originalValue)) {
+                $enumClass = $this->getEnumsAttributes()[$key];
+                $original = new $enumClass();
 
-            return $original->equals($this->getEnumValue($key));
+                return $original->equals($this->getEnumValue($key));
+            }
         }
 
         return parent::originalIsEquivalent($key, $current);

@@ -16,3 +16,5 @@
 ## 1.4.0 - 2020-05-20
 - Add EnumList Trait
 - Fix Enum Value Validation
+## 1.4.1 - 2020-05-20
+- Fix errors

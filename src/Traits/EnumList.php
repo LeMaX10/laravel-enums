@@ -41,6 +41,7 @@ trait EnumList
     public function getEnumList($enum): array
     {
         $values = $enum::values();
+
         return  $this->makeEnumList($values, static function(Enum $enum) {
             return $enum->getValue();
         });
@@ -61,5 +62,7 @@ trait EnumList
 
             $list[$key] = $valueCallback($enum);
         }
+
+        return $list;
     }
 }

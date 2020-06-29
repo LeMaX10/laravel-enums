@@ -19,7 +19,7 @@ trait ModelEnums
      */
     public function getAttributeValue($key)
     {
-        if ($this->isEnumAttribute($key) && Arr::get($this->attributes, $key) !== null) {
+        if ($this->isEnumAttribute($key) && isset($this->attributes[$key])) {
             return $this->getEnumValue($key);
         }
 
@@ -52,7 +52,7 @@ trait ModelEnums
             return [];
         }
 
-        return (array) $this->enums ?? [];
+        return (array) ($this->enums ?? []);
     }
 
     /**
@@ -72,7 +72,7 @@ trait ModelEnums
             throw new \InvalidArgumentException('Enum is not correct');
         }
 
-        return $value;
+        return $value->getValue();
     }
 
     /**

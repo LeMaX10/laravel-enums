@@ -18,3 +18,5 @@
 - Fix Enum Value Validation
 ## 1.4.1 - 2020-05-20
 - Fix errors
+## 1.4.2 - 2020-06-29
+- Fix value setter enum

@@ -20,3 +20,5 @@
 - Fix errors
 ## 1.4.2 - 2020-06-29
 - Fix value setter enum
+## 1.4.3 - 2020-06-30
+- Fixed setter enum value type declaration

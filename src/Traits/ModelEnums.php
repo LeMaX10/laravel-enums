@@ -56,12 +56,12 @@ trait ModelEnums
     }
 
     /**
-     * @param $key
-     * @param $value
+     * @param string $key
+     * @param string|Enum $value
      *
-     * @return mixed
+     * @return string
      */
-    public function setEnumValue($key, $value): Enum
+    public function setEnumValue(string $key, $value): string
     {
         $enumObj = $this->getEnumsAttributes()[$key];
         if (\is_string($value) && call_user_func([$enumObj, 'isValid'], $value)) {
@@ -76,11 +76,11 @@ trait ModelEnums
     }
 
     /**
-     * @param $key
+     * @param string $key
      *
      * @return null|Enum
      */
-    public function getEnumValue($key): ?Enum
+    public function getEnumValue(string $key): ?Enum
     {
         if (!isset($this->attributes[$key])) {
             return null;

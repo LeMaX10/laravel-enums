@@ -98,21 +98,4 @@ trait ModelEnums
     {
         return array_key_exists($key, $this->getEnumsAttributes());
     }
-
-    /**
-     * Determine if the new and old values for a given key are equivalent.
-     *
-     * @param  string $key
-     * @param  mixed  $current
-     * @return bool
-     */
-    protected function originalIsEquivalent($key, $current)
-    {
-        if ($this->isEnumAttribute($key)) {
-            $currentEnum = $this->getEnumValue($key);
-            return $currentEnum && $this->getOriginal($key) != $currentEnum->getValue();
-        }
-
-        return parent::originalIsEquivalent($key, $current);
-    }
 }

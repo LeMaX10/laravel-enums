@@ -17,13 +17,13 @@ trait ModelEnums
      * @param  string  $key
      * @return mixed
      */
-    public function getAttributeValue($key)
+    public function getAttribute($key)
     {
-        if ($this->isEnumAttribute($key) && isset($this->attributes[$key])) {
-            return $this->getEnumValue($key);
+        if ($this->isEnumAttribute($key)) {
+            return $this->getEnumValue($key, parent::getAttribute($key));
         }
 
-        return parent::getAttributeValue($key);
+        return parent::getAttribute($key);
     }
 
     /**
@@ -35,8 +35,8 @@ trait ModelEnums
      */
     public function setAttribute($key, $value)
     {
-        if ($this->isEnumAttribute($key) && !empty($value)) {
-            $this->attributes[$key] = $this->setEnumValue($key, $value);
+        if ($this->isEnumAttribute($key)) {
+            $this->attributes[$key] = is_null($value) ? null : $this->setEnumValue($key, $value);
             return $this;
         }
 
@@ -80,18 +80,14 @@ trait ModelEnums
      *
      * @return null|Enum
      */
-    public function getEnumValue(string $key): ?Enum
+    public function getEnumValue(string $key, $value): ?Enum
     {
-        if (!isset($this->attributes[$key])) {
-            return null;
+        if ($value instanceof Enum) {
+            return $value;
         }
 
-        if (!$this->attributes[$key] instanceof Enum) {
-            $enumClass = $this->getEnumsAttributes()[$key];
-            $this->attributes[$key] = new $enumClass($this->attributes[$key]);
-        }
-
-        return $this->attributes[$key];
+        $enumClass = $this->getEnumsAttributes()[$key];
+        return new $enumClass($this->attributes[$key]);
     }
 
     /**

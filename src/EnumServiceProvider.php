@@ -4,6 +4,7 @@ namespace LeMaX10\Enums;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Validator;
+use LeMaX10\Enums\Console\SyncModelEnumCommand;
 use LeMaX10\Enums\Rules\EnumValue;
 
 /**
@@ -13,7 +14,19 @@ use LeMaX10\Enums\Rules\EnumValue;
 class EnumServiceProvider extends ServiceProvider
 {
     /**
-     *
+     * @return void
+     */
+    public function register(): void
+    {
+        parent::register();
+
+        $this->commands([
+            SyncModelEnumCommand::class
+        ]);
+    }
+
+    /**
+     * @return void
      */
     public function boot(): void
     {

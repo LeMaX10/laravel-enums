@@ -166,6 +166,21 @@ Register the service provider in config/app.php from Laravel < 5.5:
     ...
 ]
 ```
+
+## Migration or Sync values
+
+You can synchronize the enums created in the database using the sync command.
+### Example
+1. Create enum column or change exists column in table and run
+```php
+Schema::create('tableName', function (Blueprint $table): void {
+            $table->increments('id');
+            $table->enum('status', array_values(ExampleStatusEnum::toArray()));
+        });
+```
+
+2. Run sync command php artisan db:enum:sync App\\Models\\ExampleModel
+
 ## Usage
 
 ``` php

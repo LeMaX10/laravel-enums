@@ -22,3 +22,5 @@
 - Fix value setter enum
 ## 1.4.3 - 2020-06-30
 - Fixed setter enum value type declaration
+## 1.5.0 - 2021-01-13
+- Create command Sync Enum local to DB.

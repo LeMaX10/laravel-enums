@@ -24,5 +24,7 @@
 - Fixed setter enum value type declaration
 ## 1.5.0 - 2021-01-13
 - Create command Sync Enum local to DB.
-## 1.5.1 - 2021-01-18
+## 1.5.1 - 2021-01-14
+- Add support laravel 8.0
+## 1.5.2 - 2021-01-18
 - Create scope findByEnum(string $column, Enum $enum)

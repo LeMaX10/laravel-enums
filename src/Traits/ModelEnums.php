@@ -2,6 +2,8 @@
 
 namespace LeMaX10\Enums\Traits;
 
+use http\Exception\InvalidArgumentException;
+use Illuminate\Database\Eloquent\Builder;
 use LeMaX10\Enums\Enum;
 use Illuminate\Support\Arr;
 
@@ -97,5 +99,24 @@ trait ModelEnums
     public function isEnumAttribute(string $key): bool
     {
         return array_key_exists($key, $this->getEnumsAttributes());
+    }
+
+    /**
+     * @param  string  $column
+     * @param  Enum  $enum
+     */
+    public function scopeFindByEnum($query, string $column, Enum $enum): void
+    {
+        if (!$this->isEnumAttribute($column)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    'Column [%s] in model [%s] has not Enum',
+                    $column,
+                    static::class
+                )
+            );
+        }
+
+        $query->where($column, $enum->getValue());
     }
 }

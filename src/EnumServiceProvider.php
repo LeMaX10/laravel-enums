@@ -18,8 +18,6 @@ class EnumServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        parent::register();
-
         $this->commands([
             SyncModelEnumCommand::class
         ]);

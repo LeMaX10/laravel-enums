@@ -28,3 +28,5 @@
 - Add support laravel 8.0
 ## 1.5.2 - 2021-01-18
 - Create scope findByEnum(string $column, Enum $enum)
+## 1.5.3 - 2021-01-25
+- Fix error from ServiceProvider (thanks [dead23angel](https://github.com/dead23angel))

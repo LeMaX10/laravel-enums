@@ -2,10 +2,7 @@
 
 namespace LeMaX10\Enums\Traits;
 
-use http\Exception\InvalidArgumentException;
-use Illuminate\Database\Eloquent\Builder;
 use LeMaX10\Enums\Enum;
-use Illuminate\Support\Arr;
 
 /**
  * Trait ModelEnums
@@ -66,7 +63,7 @@ trait ModelEnums
     public function setEnumValue(string $key, $value): string
     {
         $enumObj = $this->getEnumsAttributes()[$key];
-        if (\is_string($value) && call_user_func([$enumObj, 'isValid'], $value)) {
+        if (\is_string($value) && $enumObj->isValid($value)) {
             $value = new $enumObj($value);
         }
 

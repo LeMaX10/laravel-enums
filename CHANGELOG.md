@@ -32,3 +32,5 @@
 - Fix error from ServiceProvider (thanks [dead23angel](https://github.com/dead23angel))
 ## 1.5.4 - 2021-02-17
 - Fix error from get enum value and default setter
+## 1.5.5 - 2021-02-17
+- Fix error validator enum value

@@ -30,3 +30,5 @@
 - Create scope findByEnum(string $column, Enum $enum)
 ## 1.5.3 - 2021-01-25
 - Fix error from ServiceProvider (thanks [dead23angel](https://github.com/dead23angel))
+## 1.5.4 - 2021-02-17
+- Fix error from get enum value and default setter

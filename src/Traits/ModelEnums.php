@@ -10,6 +10,8 @@ use LeMaX10\Enums\Enum;
  */
 trait ModelEnums
 {
+    private $defaultValueKey = 'DEFAULT';
+
     /**
      * Get a plain attribute (not a relationship).
      *
@@ -86,6 +88,11 @@ trait ModelEnums
         }
 
         $enumClass = $this->getEnumsAttributes()[$key];
+        if (!array_key_exists($key, $this->getAttributes())) {
+            return $enumClass::isValidKey($this->defaultValueKey) ?
+                $enumClass::{$this->defaultValueKey}() : null;
+        }
+
         return new $enumClass($this->attributes[$key]);
     }
 
